@@ -53,8 +53,8 @@ MonoBehaviour:
   visualPreset: 0
   colorScheme: 0
   histogramEqualization: 1
-  minDist: 0
-  maxDist: 6
+  minDist: 0.3
+  maxDist: 16
 --- !u!114 &114340648865021418
 MonoBehaviour:
   m_ObjectHideFlags: 0
