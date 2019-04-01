@@ -24,10 +24,17 @@ public class RsPointCloudRenderer : MonoBehaviour
     FrameQueue depthQueue;
     FrameQueue rgbQueue;
 
+    public GameObject particleProto;
+    public GameObject unityObject;
+    public GameObject sphere;
+
     void Start()
     {
         Source.OnStart += OnStartStreaming;
         Source.OnStop += Dispose;
+
+        // particle = Object.Instantiate(particleProto);
+        sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
     }
 
     private void OnStartStreaming(PipelineProfile obj)
@@ -189,7 +196,8 @@ public class RsPointCloudRenderer : MonoBehaviour
             if (depthQueue.PollForFrame<Points>(out points))
                 using (points)
                 {
-                    //Debug.Log(points.Count);
+                    int count = points.Count;
+                    Debug.Log(count);
                     //Debug.Log("hello");
 
                     if (points.Count != mesh.vertexCount)
@@ -210,6 +218,17 @@ public class RsPointCloudRenderer : MonoBehaviour
 
                         mesh.vertices = vertices;
                         mesh.UploadMeshData(false);
+
+                        //Vector3 verMid = vertices[(int)count/2];
+                        //Debug.Log((float)verMid.y);
+
+                        Vector3 vec = vertices[5000];
+
+                        Debug.Log("x =" + (float)vec.x);
+                        Debug.Log("z =" + (float)vec.z);
+                        Debug.Log("y =" + (float)vec.y);
+
+                        sphere.transform.position = vec;
                     }
                 }
 
@@ -278,4 +297,10 @@ public class RsPointCloudRenderer : MonoBehaviour
                 return TextureFormat.RGB24;
         }
     }
+
+    //// temp particle function
+    //public CParticle(GameObject particleGraphic)
+    //{
+    //    unityObject = Object.Instantiate(particleGraphic);
+    //}
 }
