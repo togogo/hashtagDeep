@@ -27,6 +27,7 @@ public class RsPointCloudRenderer : MonoBehaviour
     public GameObject particleProto;
     public GameObject unityObject;
     public GameObject sphere;
+    public float sphereScale;
 
     void Start()
     {
