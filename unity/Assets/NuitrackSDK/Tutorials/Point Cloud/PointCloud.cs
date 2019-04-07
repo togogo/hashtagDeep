@@ -28,6 +28,7 @@ public class PointCloud : MonoBehaviour
 
     void Initialize()
     {
+
         initialized = true;
 
         nuitrack.OutputMode mode = NuitrackManager.DepthSensor.GetOutputMode(); //Returns the structure in which there is resolution, FPS and FOV of the sensor

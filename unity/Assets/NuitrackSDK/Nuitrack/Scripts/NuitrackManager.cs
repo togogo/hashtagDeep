@@ -218,7 +218,27 @@ public class NuitrackManager : MonoBehaviour
             }
         }
         else
+        {
             nuitrack.Nuitrack.Init();
+
+            //... Change default Nuitrack.config settings
+
+            nuitrack.Nuitrack.SetConfigValue("DepthProvider.Depth2ColorRegistration", "true");
+            nuitrack.Nuitrack.SetConfigValue("RealSense2Module.Depth.Preset", "5");
+            nuitrack.Nuitrack.SetConfigValue("RealSense2Module.Depth.RawWidth", "848");
+            nuitrack.Nuitrack.SetConfigValue("RealSense2Module.Depth.RawHeight", "480");
+            nuitrack.Nuitrack.SetConfigValue("RealSense2Module.Depth.ProcessWidth", "848");
+            nuitrack.Nuitrack.SetConfigValue("RealSense2Module.Depth.ProcessHeight", "480");
+            nuitrack.Nuitrack.SetConfigValue("RealSense2Module.Depth.FPS", "60");
+
+            string alignCheck = nuitrack.Nuitrack.GetConfigValue("DepthProvider.Depth2ColorRegistration");
+            string resolutionCheck = nuitrack.Nuitrack.GetConfigValue("RealSense2Module.Depth.RawWidth");
+
+            // Debug.Log(alignCheck);
+            // Debug.Log(resolutionCheck);
+
+            //...
+        }
 #endif
         Debug.Log("Init OK");
 
